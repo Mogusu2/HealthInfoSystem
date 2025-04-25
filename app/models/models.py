@@ -23,8 +23,11 @@ class Client(SQLModel, table=True):
     name: str
     age: int
     contact: str
+    email: str = Field(index=True, unique=True)
+    hashed_password: str
 
     enrolled_programs: List[HealthProgram] = Relationship(
         back_populates="enrolled_clients",
         link_model=Enrollment
     )
+
